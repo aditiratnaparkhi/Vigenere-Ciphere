@@ -1,0 +1,228 @@
+#:import utils kivy.utils
+BoxLayout:
+    orientation: 'vertical'
+    MDToolbar:
+        markup: True
+        font_size: 22
+        title: "[b][font=times][size=22]Vigenere [/size][sup][size=18][i][color=#FFC95E]Cipher[/color][/i][/size][/sup][/font][/b]"
+        text_outline: 4
+        md_bg_color: 0.2,0.2,0.2,1
+        specific_text_color: 1,1,1,1
+
+
+    MDBottomNavigation:
+        panel_color: 235/255,184/255,106/255,1
+        id:android_tabs
+        tab_bar_height: '35dp'
+        background_normal: ""
+        background_color: 1,0,0,0.85
+        elevation: 0
+        text_color_normal: 0, 0, 0, 0.85
+        text_color_active: 56/255, 67/255, 181/255, 1
+        color_indicator: 0.95, 0.95, 0.1, 1
+
+
+        MDBottomNavigationItem:
+            name: 'screen 1'
+            text: 'Home'
+            icon: 'tab'
+            background_color: 1,0,1,1
+            FitImage:
+                source:"main.jpg"
+            MDCard:
+                size_hint: None, None
+                size: 500, 600
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 10
+                padding: 25
+                spacing: 25
+                orientation: 'vertical'
+                radius: [36,]
+                background: "bg.jpg"
+                FitImage:
+                    size_hint_y: 6
+                    source: 'logo.png'
+                    radius: [36, 36, 36, 36, ]
+                    size:self.size
+                MDLabel:
+                    markup: True
+                    id:welcome
+                    font_size: 22
+                    font_weight: 3
+                    text: "[b][color=#FFC83B][font=ZakirahsHandB][size=40]HELLO !![/size][/font][/color][/b]"
+                    halign: 'center'
+
+
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: 'Encrypt'
+            icon: 'tab'
+            FitImage:
+                source:"main.jpg"
+            MDCard:
+                size_hint: None, None
+                size: 500, 600
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 10
+                padding: 25
+                spacing: 25
+                orientation: 'vertical'
+                radius: [36,]
+                background: "bg.jpg"
+                FitImage:
+                    size_hint_y:5.5
+                    size_hint_x:0.92
+                    source: 'screen2.jpg'
+                    radius: [36, 36, 36, 36, ]
+                    size:self.size
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+
+                MDLabel:
+                    id:output
+                    markup: True
+                    text: ""
+                    color:1,1,1,1
+                    font_size: 22
+                    halign: 'center'
+                    size_hint_y:None
+                    pos_hint: {"center_x":0.5,"center_y":0.5 }
+
+                MDTextFieldRound:
+                    id:username
+                    hint_text: "USERNAME"
+                    icon_right: "account"
+                    size_hint_x:None
+                    size_hint_y:0.8
+                    height: 200
+                    width:250
+                    font_size: 25
+                    pos_hint: {"center_x":0.5,"center_y":0.5 }
+
+                MDTextFieldRound:
+                    id:password
+                    hint_text: "PASSWORD"
+                    icon_right: "eye-off"
+                    size_hint_x:None
+                    size_hint_y:0.8
+                    width:250
+                    font_size: 25
+                    pos_hint: {"center_x":0.5,"center_y":0.5}
+                    password: True
+
+                MDRoundFlatButton:
+                    markup: True
+                    text: "[b][color=#7A85FF][font=Arial]ENCRYPT [/font][/color][/b]"
+                    font_size: 20
+                    pos_hint: {"center_x":0.5}
+                    background_normal: ''
+			        #background_color: (238/255.0,250/250.0,0/250.0,1)
+                    background_color: utils.get_color_from_hex('#7A85FF')
+                    on_press: app.callback()
+
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: 'Decrypt'
+            icon: 'tab'
+            FitImage:
+                source:"main.jpg"
+            MDCard:
+                size_hint: None, None
+                size: 500, 600
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 10
+                padding: 25
+                spacing: 25
+                orientation: 'vertical'
+                radius: [36,]
+                background: "bg.jpg"
+                FitImage:
+                    size_hint_y:5.5
+                    size_hint_x:0.92
+                    source: 'screen3.jpg'
+                    radius: [36, 36, 36, 36, ]
+                    size:self.size
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                
+                MDLabel:
+                    id:output1
+                    markup: True
+                    text: ""
+                    color:1,1,1,1
+                    font_size: 22
+                    halign: 'center'
+                    size_hint_y:None
+                    pos_hint: {"center_x":0.5,"center_y":0.5 }
+
+                MDTextFieldRound:
+                    id:username1
+                    hint_text: "USERNAME"
+                    icon_right: "account"
+                    size_hint_x:None
+                    size_hint_y:0.8
+                    height: 200
+                    width:250
+                    font_size: 25
+                    pos_hint: {"center_x":0.5,"center_y":0.5 }
+
+
+                MDRoundFlatButton:
+                    markup: True
+                    text: "[b][color=#7A85FF][font=Arial]DECRYPT [/font][/color][/b]"
+                    font_size: 20
+                    pos_hint: {"center_x":0.5}
+                    background_normal: ''
+			        #background_color: (238/255.0,250/250.0,0/250.0,1)
+                    background_color: utils.get_color_from_hex('#7A85FF')
+                    on_press: app.decrypt()
+
+
+
+        MDBottomNavigationItem:
+            name: 'screen 4'
+            text: 'About'
+            icon: 'tab'
+            FitImage:
+                source:"main.jpg"
+            MDCard:
+                size_hint: None, None
+                size: 500, 600
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 10
+                padding: 25
+                spacing: 25
+                orientation: 'vertical'
+                radius:[36,]
+                background: "bg.jpg"
+                MDLabel:
+                    id:output2
+                    markup: True
+                    text: "[b][color=#FFFFFF][font=times]The Vigenere Cipher is an advanced version of the very simple Rotation Cipher. It was created in 1508 by Johannes Trithemius, who also created a tabula recta to help decode and encode the cipher.A Rotation Cipher rotates each character by adding it to another character.To make that happen, we assign every character in our alphabet a number. So a=0, b=1, c=2…Now we can turn characters into numbers, add them together, and turn the result back into a character![/font][/color][/b]"
+                    font_size: 22
+                    halign: 'center'
+                    size_hint_y:6
+                    pos_hint: {"center_x":0.5,"center_y":0.5}
+
+
+        Widget:
+            size_hint_y:None
+            height: 0
+            canvas:
+                Color:
+                    rgba: 0, 1, 1, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+
+
+
+
+
+
+
+
+
+
+
